@@ -7,15 +7,14 @@
 using namespace std;
 int n, k;
 int coin[101];
-int dp[10000];
+int dp[10001];
 
 int main() {
 #ifdef _CONSOLE
 	freopen("input.txt", "r", stdin);
 #endif
-	for (int i = 0; i < 10000; i++)
-		dp[i] = INT_MAX;
-	int n, k;
+	for (int i = 0; i < 10001; i++)
+		dp[i] = 987654321;
 	scanf("%d%d", &n, &k);
 	for (int i = 0; i < n; i++)
 		scanf("%d", &coin[i]);
@@ -25,5 +24,8 @@ int main() {
 			dp[j] = min(dp[j], dp[j - coin[i]] + 1);
 		}
 	}
-	printf("%d\n", dp[k]==INT_MAX ? -1 : dp[k]);
+	if (dp[k] >= 987654321)
+		printf("-1\n");
+	else
+		printf("%d\n", dp[k]);
 }
